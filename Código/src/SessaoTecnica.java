@@ -45,10 +45,10 @@ public class SessaoTecnica {
 
         tamApresentacoes = apresentacoes.size();
 
-        System.out.println("-Apresentacoes-");
+        System.out.println("-Apresentacoes-"+"\n");
         for(int i=0; i < tamApresentacoes; i++){
             auxApresentacao = apresentacoes.get(i);
-            System.out.println("Id do trabalho: "+auxApresentacao.getTrabalho().getId()+"\n");
+            System.out.println("\n"+"Id do trabalho: "+auxApresentacao.getTrabalho().getId());
             System.out.println("Titulo: "+auxApresentacao.getTrabalho().getTitulo());
             System.out.println("Resumo: "+auxApresentacao.getTrabalho().getResumo());
             System.out.println("Prof. Orientador: "+auxApresentacao.getTrabalho().getOrientador().getNome());
