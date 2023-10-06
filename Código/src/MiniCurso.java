@@ -11,6 +11,16 @@ public class MiniCurso {
     private ArrayList<Pessoa> participantes;
     private Sala local;
 
+    public MiniCurso() {
+        titulo = null;
+        data = null;
+        horaInicio = null;
+        horaFim = null;
+        profissional = null;
+        participantes = new ArrayList<Pessoa>();
+        local = null;
+    }
+
     public String getTitulo() {
         return titulo;
     }
