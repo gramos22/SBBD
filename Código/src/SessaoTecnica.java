@@ -3,15 +3,15 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 public class SessaoTecnica {
-    private Date date;
+    private Date data;
     private Time horaInicio;
     private Time horaFim;
     private Sala local;
     private Professor mediador;
     private ArrayList<Apresentacao> apresentacoes = new ArrayList<>();
 
-    public Date getDate() {
-        return date;
+    public Date getData() {
+        return data;
     }
 
     public Time getHoraInicio() {
