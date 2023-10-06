@@ -308,6 +308,9 @@ public class App {
                         System.out.println("Entre com o nome de um participante (DIGITE 0 PARA PARAR): ");
                         auxParticipante = scanner.nextLine();
                     }
+
+                    miniCursos.add(minicurso);
+
                     System.out.println("\nMini Curso registrado com sucesso!\n");
                     break;
                 case 3:
@@ -320,7 +323,7 @@ public class App {
         } while (opcao != 0);
     }
 
-    public void submenuSessoesTecnicas(Scanner scanner) {
+    public void submenuSessoesTecnicas(Scanner scanner) {                                                                                                                                                                   
         int opcao;
         Time auxHoraInicio, auxHoraApresentacao;
         String auxMediador;
@@ -373,7 +376,9 @@ public class App {
                         auxIdTrabalho = scanner.nextInt();
                     }
 
-                    
+                    sessoesTecnicas.add(sessaoTecnica);
+
+                    break;
                 case 3:
                     LocalDate auxData;
 
@@ -395,6 +400,64 @@ public class App {
         } while (opcao != 0);
     }
 
+    public void submenuInstituicoes(Scanner scanner) {                                                                                                                                                                   
+        int opcao, opcaoInstituicao;
+
+        do {
+            System.out.println("-------------------------------------");
+            System.out.println("\tSBBD v1.0/Instituicoes");
+            System.out.println("-------------------------------------");
+            System.out.println("1- Listar");
+            System.out.println("2- Cadastrar");
+            System.out.println("3- Remover");
+            System.out.println("0- Sair");
+            System.out.println("Escolha uma opcao: ");
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    listarInstituicoes();
+                    break;
+                case 2:
+                    System.out.println("Cadastro de Instituicao:\n");
+
+                    System.out.println("1. Empresa");
+                    System.out.println("2. Universidade");
+                    System.out.println("Escolha uma opcao: "); opcaoInstituicao = scanner.nextInt();
+
+                    if(opcaoInstituicao == 1) {
+                        Empresa empresa = new Empresa();
+
+                        System.out.println("\nCadastro de Empresa:\n");
+                        System.out.println("Nome: "); empresa.setNome(scanner.nextLine());
+                        System.out.println("CNPJ: "); empresa.setCnpj(scanner.nextLine());
+                        System.out.println("Ramo de atividade: "); empresa.setRamoAtividade(scanner.nextLine());
+                        
+                        instituicoes.add(empresa);
+                    } else if(opcaoInstituicao == 2) {
+                        Universidade universidade = new Universidade();
+
+                        System.out.println("\nCadastro de Universiade:\n");
+                        System.out.println("Nome: "); universidade.setNome(scanner.nextLine());
+                        System.out.println("CNPJ: "); universidade.setCnpj(scanner.nextLine());
+                        System.out.println("Quantidade de cursos: "); universidade.setQtdeCursos(scanner.nextInt());
+                        
+                        instituicoes.add(universidade);
+                    }
+                    break;
+                case 3:
+                    System.out.println("Entre com o nome da instituicao a ser removida: ");
+                    
+                    excluirInstituicao(scanner.nextLine());
+
+                    System.out.println("\nSessao Tecnica excluida com sucesso!\n");
+                    break;
+                default:
+                    break;
+            }
+        } while (opcao != 0);
+    }
+    
     public static void main(String[] args) throws Exception {
         App app = new App();
         Scanner scanner = new Scanner(System.in);
@@ -406,8 +469,10 @@ public class App {
             System.out.println("-------------------------------------");
             System.out.println("1- Mini Cursos");
             System.out.println("2- Sessoes Tecnicas");
-            System.out.println("4- Instituicoes");
-            System.out.println("5- Pessoas");
+            System.out.println("3- Instituicoes");
+            System.out.println("4- Pessoas");
+            System.out.println("5- Salas");
+            System.out.println("6- Trabalhos");
             System.out.println("0- Sair");
             System.out.println("Escolha uma opcao: ");
             opcao = scanner.nextInt();
@@ -416,7 +481,8 @@ public class App {
                 case 1:
                     app.submenuMinicursos(scanner);
                     break;
-
+                case 2:
+                    app.submenuSessoesTecnicas(scanner);
                 default:
                     break;
             }

@@ -8,6 +8,4 @@ public class Universidade extends Instituicao {
     public void setQtdeCursos(int qtdeCursos) {
         this.qtdeCursos = qtdeCursos;
     }
-
-    
 }
