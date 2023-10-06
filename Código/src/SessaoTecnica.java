@@ -46,9 +46,8 @@ public class SessaoTecnica {
         tamApresentacoes = apresentacoes.size();
 
         for(int i=0; i < tamApresentacoes; i++){
-            System.out.println("------------------------------------------------");
             auxApresentacao = apresentacoes.get(i);
-            System.out.println("Apresentacao do trabalho de id: "+auxApresentacao.getTrabalho().getId()+"\n");
+            System.out.println("Id do trabalho: "+auxApresentacao.getTrabalho().getId()+"\n");
             System.out.println("Titulo: "+auxApresentacao.getTrabalho().getTitulo());
             System.out.println("Resumo: "+auxApresentacao.getTrabalho().getResumo());
             System.out.println("Prof. Orientador: "+auxApresentacao.getTrabalho().getOrientador().getNome());
@@ -58,7 +57,6 @@ public class SessaoTecnica {
             for(int j = 0; j < tamIntegrantes; j++) {
                 System.out.println("- "+auxIntegrantes.get(i).getNome());
             }
-            System.out.println("------------------------------------------------");
         }
 
     }
