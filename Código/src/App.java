@@ -255,6 +255,34 @@ public class App {
         return null;
     }
 
+    public void listarTrabalhos() {
+        int tamTrabalhos = trabalhos.size();
+        Trabalho auxTrabalho;
+
+        for(int i = 0; i < tamTrabalhos; i++) {
+            auxTrabalho = trabalhos.get(i);
+
+            System.out.println("-------------------------------------");
+            System.out.println("ID: " + auxTrabalho.getId());
+            System.out.println("Titulo: " + auxTrabalho.getTitulo());
+            System.out.println("Resumo: " + auxTrabalho.getResumo());
+            System.out.println("Orientador: " + auxTrabalho.getOrientador().getNome());
+            auxTrabalho.listarIntegrantes();
+            System.out.println("-------------------------------------");
+        }
+    }
+
+    public void excluirTrabalho(int id) {
+        int tamTrabalhos = trabalhos.size();
+        Trabalho auxTrabalho;
+        for(int i = 0; i < tamTrabalhos; i++) {
+            auxTrabalho = trabalhos.get(i);
+            if(auxTrabalho.getId() == id) {
+                trabalhos.remove(i);
+            }
+        }
+    }
+
     public void submenuMinicursos(Scanner scanner) {
         int opcao;
 
@@ -449,6 +477,65 @@ public class App {
                     System.out.println("Entre com o nome da instituicao a ser removida: ");
                     
                     excluirInstituicao(scanner.nextLine());
+
+                    System.out.println("\nSessao Tecnica excluida com sucesso!\n");
+                    break;
+                default:
+                    break;
+            }
+        } while (opcao != 0);
+    }
+
+    public void submenuTrabalhos(Scanner scanner) {
+        String auxIntegrante;
+        Estudante auxEstudante;                                            
+        int opcao;
+
+        do {
+            System.out.println("-------------------------------------");
+            System.out.println("\tSBBD v1.0/Trabalhos");
+            System.out.println("-------------------------------------");
+            System.out.println("1- Listar");
+            System.out.println("2- Cadastrar");
+            System.out.println("3- Remover");
+            System.out.println("0- Sair");
+            System.out.println("Escolha uma opcao: ");
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    listarTrabalhos();
+                    break;
+                case 2:
+                    Trabalho trabalho = new Trabalho();
+
+                    System.out.println("Cadastro de Trabalho:\n");
+
+                    System.out.println("ID: "); trabalho.setId(scanner.nextInt());
+
+                    System.out.println("Titulo: "); trabalho.setTitulo(scanner.nextLine());
+
+                    System.out.println("Resumo: "); trabalho.setResumo(scanner.nextLine());
+
+                    System.out.println("Orientador: "); trabalho.setOrientador(buscarProfessor(scanner.nextLine()));
+
+                    auxIntegrante = scanner.nextLine();
+                    while (auxIntegrante != "0") {
+                        auxEstudante = buscarEstudante(auxIntegrante);
+                        if (auxEstudante != null) {
+                            trabalho.adicionarIntegrante(auxEstudante);
+                        } else {
+                            System.out.println("\nPessoa nao cadastrada no evento!\n");
+                        }
+                        System.out.println("Entre com o nome de um participante (DIGITE 0 PARA PARAR): ");
+                        auxIntegrante = scanner.nextLine();
+                    }
+
+                    break;
+                case 3:
+                    System.out.println("Entre com o ID do trabalho a ser excluido: ");
+                    
+                    excluirTrabalho(scanner.nextInt());
 
                     System.out.println("\nSessao Tecnica excluida com sucesso!\n");
                     break;
