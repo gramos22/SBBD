@@ -9,6 +9,16 @@ public class App {
     ArrayList<SessaoTecnica> sessoesTecnicas;
     ArrayList<Instituicao> instituicoes;
     ArrayList<Pessoa> pessoas;
+    ArrayList<Sala> salas;
+    ArrayList<Trabalho> trabalhos;
+
+    private LocalDate parseData(String data) {
+        String auxData[];
+
+        auxData = data.split("/");
+
+        return LocalDate.of(Integer.parseInt(auxData[2]), Month.of(Integer.parseInt(auxData[1])), Integer.parseInt(auxData[0]));
+    }
 
     public void listarMinicursos() {
         int tamMiniCursos = miniCursos.size();
@@ -117,10 +127,10 @@ public class App {
     public Estudante buscar(String nome) {
         int tamPessoas = pessoas.size();
         Pessoa auxPessoa;
-        
-        for(int i = 0; i < tamPessoas; i++) {
+
+        for (int i = 0; i < tamPessoas; i++) {
             auxPessoa = pessoas.get(i);
-            if(auxPessoa instanceof Estudante && auxPessoa.getNome() == nome) {
+            if (auxPessoa instanceof Estudante && auxPessoa.getNome() == nome) {
                 return (Estudante) auxPessoa;
             }
         }
@@ -157,14 +167,42 @@ public class App {
         pessoas.add(pessoa);
     }
 
+    public Pessoa buscarPessoa(String nome) {
+        int tamPessoas = pessoas.size();
+        Pessoa auxPessoa;
+
+        for (int i = 0; i < tamPessoas; i++) {
+            auxPessoa = pessoas.get(i);
+            if (auxPessoa.getNome() == nome) {
+                return auxPessoa;
+            }
+        }
+
+        return null;
+    }
+
     public Profissional buscarProfissional(String nome) {
         int tamPessoas = pessoas.size();
         Pessoa auxPessoa;
-        
-        for(int i = 0; i < tamPessoas; i++) {
+
+        for (int i = 0; i < tamPessoas; i++) {
             auxPessoa = pessoas.get(i);
-            if(auxPessoa instanceof Profissional && auxPessoa.getNome() == nome) {
+            if (auxPessoa instanceof Profissional && auxPessoa.getNome() == nome) {
                 return (Profissional) auxPessoa;
+            }
+        }
+
+        return null;
+    }
+
+    public Professor buscarProfessor(String nome) {
+        int tamPessoas = pessoas.size();
+        Pessoa auxPessoa;
+
+        for (int i = 0; i < tamPessoas; i++) {
+            auxPessoa = pessoas.get(i);
+            if (auxPessoa instanceof Professor && auxPessoa.getNome() == nome) {
+                return (Professor) auxPessoa;
             }
         }
 
@@ -174,11 +212,43 @@ public class App {
     public Estudante buscarEstudante(String nome) {
         int tamPessoas = pessoas.size();
         Pessoa auxPessoa;
-        
-        for(int i = 0; i < tamPessoas; i++) {
+
+        for (int i = 0; i < tamPessoas; i++) {
             auxPessoa = pessoas.get(i);
-            if(auxPessoa instanceof Estudante && auxPessoa.getNome() == nome) {
+            if (auxPessoa instanceof Estudante && auxPessoa.getNome() == nome) {
                 return (Estudante) auxPessoa;
+            }
+        }
+
+        return null;
+    }
+
+    public void adicionarSala(Sala sala) {
+        salas.add(sala);
+    }
+
+    public Sala buscarSala(int codigo) {
+        int tamSalas = salas.size();
+        Sala auxSala;
+
+        for(int i = 0; i < tamSalas; i++) {
+            auxSala = salas.get(i);
+            if(auxSala.getCodigo() == codigo) {
+                return auxSala;
+            }
+        }
+
+        return null;
+    }
+
+    public Trabalho buscarTrabalho(int id) {
+        int tamTrabalho = trabalhos.size();
+        Trabalho auxTrabalho;
+
+        for(int i = 0; i < tamTrabalho; i++) {
+            auxTrabalho = trabalhos.get(i);
+            if(auxTrabalho.getId() == id) {
+                return auxTrabalho;
             }
         }
 
@@ -194,10 +264,10 @@ public class App {
             System.out.println("-------------------------------------");
             System.out.println("1- Listar");
             System.out.println("2- Cadastrar");
-            System.out.println("3- Cadastrar participantes:");
-            System.out.println("4- Remover");
+            System.out.println("3- Remover");
             System.out.println("0- Sair");
-            System.out.println("Escolha uma opcao: "); opcao = scanner.nextInt();
+            System.out.println("Escolha uma opcao: ");
+            opcao = scanner.nextInt();
 
             switch (opcao) {
                 case 1:
@@ -205,22 +275,120 @@ public class App {
                     break;
                 case 2:
                     MiniCurso minicurso = new MiniCurso();
-                    String auxData[];
+                    String auxParticipante = "";
+                    Pessoa auxPessoa;
+
                     System.out.println("Cadastro de Mini Curso:\n");
 
-                    System.out.println("Titulo: "); minicurso.setTitulo(scanner.nextLine());
+                    System.out.println("Titulo: ");
+                    minicurso.setTitulo(scanner.nextLine());
 
-                    System.out.println("Data (01/01/2000): "); auxData = scanner.nextLine().split("/");
+                    System.out.println("Data (01/01/2000): ");
 
-                    minicurso.setData(LocalDate.of(Integer.parseInt(auxData[2]), Month.of(Integer.parseInt(auxData[1])), Integer.parseInt(auxData[0])));
-                    
-                    System.out.println("Hora de Inicio (13:00): "); 
+                    minicurso.setData(parseData(scanner.nextLine()));
+
+                    System.out.println("Hora de Inicio (13:00): ");
                     minicurso.setHoraInicio(Time.valueOf(scanner.nextLine().concat(":00")));
 
                     System.out.println("Hora de Fim (13:00): ");
                     minicurso.setHoraFim(Time.valueOf(scanner.nextLine().concat(":00")));
 
-                    System.out.println("Profissional: "); minicurso.setProfissional(buscarProfissional(scanner.nextLine()));
+                    System.out.println("Profissional: ");
+                    minicurso.setProfissional(buscarProfissional(scanner.nextLine()));
+
+                    System.out.println("Entre com o nome de um participante (DIGITE 0 PARA PARAR): ");
+                    auxParticipante = scanner.nextLine();
+                    while (auxParticipante != "0") {
+                        auxPessoa = buscarPessoa(auxParticipante);
+                        if (auxPessoa != null) {
+                            minicurso.adicionarParticipante(auxPessoa);
+                        } else {
+                            System.out.println("\nPessoa nao cadastrada no evento!\n");
+                        }
+                        System.out.println("Entre com o nome de um participante (DIGITE 0 PARA PARAR): ");
+                        auxParticipante = scanner.nextLine();
+                    }
+                    System.out.println("\nMini Curso registrado com sucesso!\n");
+                    break;
+                case 3:
+                    System.out.println("Entre com o titulo do Mini Curso a ser removido: ");
+                    excluirMinicurso(scanner.nextLine());
+                    break;
+                default:
+                    break;
+            }
+        } while (opcao != 0);
+    }
+
+    public void submenuSessoesTecnicas(Scanner scanner) {
+        int opcao;
+        Time auxHoraInicio, auxHoraApresentacao;
+        String auxMediador;
+        int auxIdTrabalho;
+        Trabalho auxTrabalho;
+
+        do {
+            System.out.println("-------------------------------------");
+            System.out.println("\tSBBD v1.0/Sessoes Tecnicas");
+            System.out.println("-------------------------------------");
+            System.out.println("1- Listar");
+            System.out.println("2- Cadastrar");
+            System.out.println("3- Remover");
+            System.out.println("0- Sair");
+            System.out.println("Escolha uma opcao: ");
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    listarSessoesTecnicas();
+                    break;
+                case 2:
+                    SessaoTecnica sessaoTecnica = new SessaoTecnica();
+
+                    System.out.println("Cadastro de Sessao Tecnica:\n");
+
+                    System.out.println("Data (01/01/2000):"); sessaoTecnica.setData(parseData(scanner.nextLine()));
+                    
+                    System.out.println("Hora Inicio (13:00)"); sessaoTecnica.setHoraInicio(Time.valueOf(scanner.nextLine().concat(":00")));
+
+                    System.out.println("Hora Fim (13:00):"); sessaoTecnica.setHoraFim(Time.valueOf(scanner.nextLine().concat(":00")));
+
+                    System.out.println("Codigo da sala: "); sessaoTecnica.setLocal(buscarSala(scanner.nextInt()));
+
+                    System.out.println("Mediador: "); sessaoTecnica.setMediador(buscarProfessor(scanner.nextLine()));
+
+                    System.out.println("Entre com o id de um trabalho a ser apresentado (DIGITE 0 PARA PARAR): ");
+                    auxIdTrabalho = scanner.nextInt();
+                    while (auxIdTrabalho != 0) {
+                        auxTrabalho = buscarTrabalho(auxIdTrabalho);
+                        if (auxTrabalho != null) {
+                            System.out.println("Entre com a hora da apresentacao: ");
+                            auxHoraApresentacao = Time.valueOf(scanner.nextLine().concat(":00"));
+
+                            sessaoTecnica.adicionarApresentacoes(new Apresentacao(auxHoraApresentacao, auxTrabalho));
+                        } else {
+                            System.out.println("\nTrabalho nao cadastrado no evento!\n");
+                        }
+                        System.out.println("Entre com o id de um trabalho a ser apresentado (DIGITE 0 PARA PARAR): ");
+                        auxIdTrabalho = scanner.nextInt();
+                    }
+
+                    
+                case 3:
+                    LocalDate auxData;
+
+                    System.out.println("Entre com a data da Sessao Tecnica a ser removida (01/01/2000): ");
+                    auxData = parseData(scanner.nextLine());
+
+                    System.out.println("Entre com a hora de Inicio da Sessao Tecnica a ser removida (13:00): ");
+                    auxHoraInicio = Time.valueOf(scanner.nextLine().concat(":00"));
+                    
+                    System.out.println("Entre com o nome do mediador: "); auxMediador = scanner.nextLine();
+
+                    excluirSessaoTecnica(auxData, auxHoraInicio, auxMediador);
+
+                    System.out.println("\nSessao Tecnica excluida com sucesso!\n");
+                    break;
                 default:
                     break;
             }
@@ -228,6 +396,7 @@ public class App {
     }
 
     public static void main(String[] args) throws Exception {
+        App app = new App();
         Scanner scanner = new Scanner(System.in);
         int opcao;
 
@@ -240,13 +409,14 @@ public class App {
             System.out.println("4- Instituicoes");
             System.out.println("5- Pessoas");
             System.out.println("0- Sair");
-            System.out.println("Escolha uma opcao: "); opcao = scanner.nextInt();
+            System.out.println("Escolha uma opcao: ");
+            opcao = scanner.nextInt();
 
             switch (opcao) {
                 case 1:
-                    
+                    app.submenuMinicursos(scanner);
                     break;
-            
+
                 default:
                     break;
             }
