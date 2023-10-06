@@ -1,21 +1,21 @@
 import java.sql.Time;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class MiniCurso {
     private String titulo;
-    private Date data;
+    private LocalDate data;
     private Time horaInicio;
     private Time horaFim;
     private Profissional profissional;
-    private List<Pessoa> participantes;
+    private ArrayList<Pessoa> participantes;
     private Sala local;
 
     public String getTitulo() {
         return titulo;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
@@ -31,7 +31,7 @@ public class MiniCurso {
         return profissional;
     }
 
-    public List<Pessoa> getParticipantes() {
+    public ArrayList<Pessoa> getParticipantes() {
         return participantes;
     }
 
@@ -43,7 +43,7 @@ public class MiniCurso {
         this.titulo = titulo;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -59,7 +59,7 @@ public class MiniCurso {
         this.profissional = profissional;
     }
 
-    public void setParticipantes(List<Pessoa> participantes) {
+    public void setParticipantes(ArrayList<Pessoa> participantes) {
         this.participantes = participantes;
     }
 
