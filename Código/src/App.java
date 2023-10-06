@@ -25,6 +25,10 @@ public class App {
         }
     }
 
+    public void adicionarMinicurso(MiniCurso miniCurso) {
+        miniCursos.add(miniCurso);
+    }
+
     public void listarSessoesTecnicas() {
         int tamSessoesTecnicas = sessoesTecnicas.size();
         SessaoTecnica auxSessaoTecnica;
@@ -42,6 +46,10 @@ public class App {
         }
     }
 
+    public void adicionarSessaoTecnica(SessaoTecnica sessaoTecnica) {
+        sessoesTecnicas.add(sessaoTecnica);
+    }
+
     public void listarInstituicoes() {
         int tamInstituicoes = instituicoes.size();
         Instituicao auxInstituicao;
@@ -53,6 +61,10 @@ public class App {
         }
     }
 
+    public void adicionarInstituicao(Instituicao instituicao) {
+        instituicoes.add(instituicao);
+    }
+
     public void listarPessoas() {
         int tamPessoas = pessoas.size();
         Pessoa auxPessoa;
@@ -62,6 +74,10 @@ public class App {
             auxPessoa = pessoas.get(i);
             System.out.println("- "+auxPessoa.getNome());
         }
+    }
+
+    public void adicionarPessoa(Pessoa pessoa) {
+        pessoas.add(pessoa);
     }
 
     public static void main(String[] args) throws Exception {
