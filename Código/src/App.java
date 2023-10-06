@@ -1,3 +1,5 @@
+import java.sql.Time;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,6 +31,20 @@ public class App {
         miniCursos.add(miniCurso);
     }
 
+    public void excluirMinicurso(String titulo) {
+        int tamMiniCursos = miniCursos.size();
+
+        for(int i = 0; i < tamMiniCursos; i++) {
+            if(miniCursos.get(i).getTitulo() == titulo) {
+                miniCursos.remove(i);
+                System.out.println("MiniCurso "+titulo+" removido com sucesso");
+                return;
+            }
+        }
+
+        System.out.println("MiniCurso nao encontrado :/");
+    }
+
     public void listarSessoesTecnicas() {
         int tamSessoesTecnicas = sessoesTecnicas.size();
         SessaoTecnica auxSessaoTecnica;
@@ -46,6 +62,22 @@ public class App {
         }
     }
 
+    public void excluirSessaoTecnica(LocalDate data, Time horaInicio, String mediador) {
+        int tamSessoesTecnicas = sessoesTecnicas.size();
+        SessaoTecnica auxSessaoTecnica;
+
+        for(int i = 0; i < tamSessoesTecnicas; i++) {
+            auxSessaoTecnica = sessoesTecnicas.get(i);
+            if(auxSessaoTecnica.getData().equals(data) && auxSessaoTecnica.getHoraInicio().equals(horaInicio) && auxSessaoTecnica.getMediador().getNome() == mediador) {
+                miniCursos.remove(i);
+                System.out.println("Sessao Tecnica do dia "+data+"e horario "+horaInicio+" removida com sucesso");
+                return;
+            }
+        }
+
+        System.out.println("Sessao Tenica nao encontrada :/");
+    }
+
     public void adicionarSessaoTecnica(SessaoTecnica sessaoTecnica) {
         sessoesTecnicas.add(sessaoTecnica);
     }
@@ -61,6 +93,20 @@ public class App {
         }
     }
 
+    public void excluirInstituicao(String nome) {
+        int tamInstituicoes = instituicoes.size();
+
+        for(int i = 0; i < tamInstituicoes; i++) {
+            if(instituicoes.get(i).getNome() == nome) {
+                instituicoes.remove(i);
+                System.out.println("Instituicao "+nome+" removida com sucesso");
+                return;
+            }
+        }
+
+        System.out.println("Instituicao nao encontrada :/");
+    }
+
     public void adicionarInstituicao(Instituicao instituicao) {
         instituicoes.add(instituicao);
     }
@@ -74,6 +120,20 @@ public class App {
             auxPessoa = pessoas.get(i);
             System.out.println("- "+auxPessoa.getNome());
         }
+    }
+
+    public void excluirPessoa(String nome) {
+        int tamPessoas = pessoas.size();
+
+        for(int i = 0; i < tamPessoas; i++) {
+            if(pessoas.get(i).getNome() == nome) {
+                pessoas.remove(i);
+                System.out.println("Pessoa "+nome+" removida com sucesso");
+                return;
+            }
+        }
+
+        System.out.println("Pessoa nao encontrada :/");
     }
 
     public void adicionarPessoa(Pessoa pessoa) {
