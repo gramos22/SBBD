@@ -1,16 +1,16 @@
-import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SessaoTecnica {
-    private Date data;
+    private LocalDate data;
     private Time horaInicio;
     private Time horaFim;
     private Sala local;
     private Professor mediador;
     private ArrayList<Apresentacao> apresentacoes = new ArrayList<>();
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
