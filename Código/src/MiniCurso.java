@@ -85,7 +85,7 @@ public class MiniCurso {
         int tamParticipantes = participantes.size();
 
         for (int i = 0; i < tamParticipantes; i++) {
-            if (participantes.get(i).getNome() == nome) {
+            if (participantes.get(i).getNome().compareTo(nome) == 1) {
                 participantes.remove(i);
                 System.out.println("Participante " + nome + " removido com sucesso");
                 return;

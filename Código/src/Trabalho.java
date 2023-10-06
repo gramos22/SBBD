@@ -5,8 +5,15 @@ public class Trabalho {
     private String resumo;
     private String titulo;
     private Professor orientador;
-    private ArrayList<Estudante> integrantes =  new ArrayList<>();
-    
+    private ArrayList<Estudante> integrantes;
+
+    public Trabalho() {
+        resumo = null;
+        titulo = null;
+        orientador = null;
+        integrantes = new ArrayList<Estudante>();
+    }
+
     public int getId() {
         return id;
     }

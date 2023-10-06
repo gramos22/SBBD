@@ -64,7 +64,7 @@ public class App {
         int tamMiniCursos = miniCursos.size();
 
         for (int i = 0; i < tamMiniCursos; i++) {
-            if (miniCursos.get(i).getTitulo() == titulo) {
+            if (miniCursos.get(i).getTitulo().compareTo(titulo) == 1) {
                 miniCursos.remove(i);
                 System.out.println("MiniCurso " + titulo + " removido com sucesso");
                 return;
@@ -148,7 +148,7 @@ public class App {
 
         for (int i = 0; i < tamPessoas; i++) {
             auxPessoa = pessoas.get(i);
-            if (auxPessoa instanceof Estudante && auxPessoa.getNome() == nome) {
+            if (auxPessoa instanceof Estudante && auxPessoa.getNome().compareTo(nome) == 0) {
                 return (Estudante) auxPessoa;
             }
         }
@@ -191,7 +191,7 @@ public class App {
 
         for (int i = 0; i < tamPessoas; i++) {
             auxPessoa = pessoas.get(i);
-            if (auxPessoa.getNome() == nome) {
+            if (auxPessoa.getNome().compareTo(nome) == 0) {
                 return auxPessoa;
             }
         }
@@ -205,7 +205,7 @@ public class App {
 
         for (int i = 0; i < tamPessoas; i++) {
             auxPessoa = pessoas.get(i);
-            if (auxPessoa instanceof Profissional && auxPessoa.getNome() == nome) {
+            if (auxPessoa instanceof Profissional && auxPessoa.getNome().compareTo(nome) == 0) {
                 return (Profissional) auxPessoa;
             }
         }
@@ -219,7 +219,7 @@ public class App {
 
         for (int i = 0; i < tamPessoas; i++) {
             auxPessoa = pessoas.get(i);
-            if (auxPessoa instanceof Professor && auxPessoa.getNome() == nome) {
+            if (auxPessoa instanceof Professor && auxPessoa.getNome().compareTo(nome) == 0) {
                 return (Professor) auxPessoa;
             }
         }
@@ -233,7 +233,7 @@ public class App {
 
         for (int i = 0; i < tamPessoas; i++) {
             auxPessoa = pessoas.get(i);
-            if (auxPessoa instanceof Estudante && auxPessoa.getNome() == nome) {
+            if (auxPessoa instanceof Estudante && auxPessoa.getNome().compareTo(nome) == 0) {
                 return (Estudante) auxPessoa;
             }
         }

@@ -8,7 +8,16 @@ public class SessaoTecnica {
     private Time horaFim;
     private Sala local;
     private Professor mediador;
-    private ArrayList<Apresentacao> apresentacoes = new ArrayList<>();
+    private ArrayList<Apresentacao> apresentacoes;
+
+    public SessaoTecnica() {
+        data = null;
+        horaInicio = null;
+        horaFim = null;
+        local = null;
+        mediador = null;
+        apresentacoes = new ArrayList<>();
+    }
 
     public LocalDate getData() {
         return data;
