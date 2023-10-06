@@ -241,6 +241,31 @@ public class App {
         return null;
     }
 
+    public void listarSalas() {
+        int tamSalas = salas.size();
+        Sala auxSala;
+
+        System.out.println("Salas:");
+        for (int i = 0; i < tamSalas; i++) {
+            auxSala = salas.get(i);
+            System.out.println("- " + auxSala.getCodigo());
+        }
+    }
+
+    public void excluirSala(int codigo) {
+        int tamSalas = salas.size();
+
+        for (int i = 0; i < tamSalas; i++) {
+            if (salas.get(i).getCodigo() == codigo) {
+                salas.remove(i);
+                System.out.println("Sala " + codigo + " removido com sucesso");
+                return;
+            }
+        }
+
+        System.out.println("Sala nao encontrada :/");
+    }
+
     public Trabalho buscarTrabalho(int id) {
         int tamTrabalho = trabalhos.size();
         Trabalho auxTrabalho;
@@ -457,7 +482,126 @@ public class App {
             }
         } while (opcao != 0);
     }
-    
+
+    public void submenuPessoas(Scanner scanner) {                                                                                                                                                                   
+        int opcao, opcaoPessoa;
+
+        do {
+            System.out.println("-------------------------------------");
+            System.out.println("\tSBBD v1.0/Instituicoes");
+            System.out.println("-------------------------------------");
+            System.out.println("1- Listar");
+            System.out.println("2- Cadastrar");
+            System.out.println("3- Remover");
+            System.out.println("0- Sair");
+            System.out.println("Escolha uma opcao: ");
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    listarPessoas();
+                    break;
+                case 2:
+                    System.out.println("Cadastro de Pessoa:\n");
+
+                    System.out.println("1. Estudante");
+                    System.out.println("2. Professor");
+                    System.out.println("3. Profissional");
+                    System.out.println("Escolha uma opcao: "); opcaoPessoa = scanner.nextInt();
+
+                    if(opcaoPessoa == 1) {
+                        Estudante estudante = new Estudante();
+
+                        System.out.println("\nCadastro de Estudante:\n");
+                        System.out.println("Nome: "); estudante.setNome(scanner.nextLine());
+                        System.out.println("CPF: "); estudante.setCpf(scanner.nextLine());
+                        System.out.println("Data de nascimento (01/01/2000):"); estudante.setDataNasc(parseData(scanner.nextLine()));
+                        System.out.println("Email: "); estudante.setEmail(scanner.nextLine());
+                        System.out.println("Matricula: "); estudante.setMatricula(scanner.nextInt());
+                        System.out.println("Curso: "); estudante.setCurso(scanner.nextLine());
+                        
+                        pessoas.add(estudante);
+                    } else if(opcaoPessoa == 2) {
+                        Professor professor = new Professor();
+
+                        System.out.println("\nCadastro de Professor:\n");
+                        System.out.println("Nome: "); professor.setNome(scanner.nextLine());
+                        System.out.println("CPF: "); professor.setCpf(scanner.nextLine());
+                        System.out.println("Data de nascimento (01/01/2000):"); professor.setDataNasc(parseData(scanner.nextLine()));
+                        System.out.println("Email: "); professor.setEmail(scanner.nextLine());
+                        System.out.println("Disciplina: "); professor.setDisciplina(scanner.nextLine());
+                        
+                        pessoas.add(professor);
+                    }
+                    else if(opcaoPessoa == 3) {
+                        Profissional profissional = new Profissional();
+
+                        System.out.println("\nCadastro de Profissional:\n");
+                        System.out.println("Nome: "); profissional.setNome(scanner.nextLine());
+                        System.out.println("CPF: "); profissional.setCpf(scanner.nextLine());
+                        System.out.println("Data de nascimento (01/01/2000):"); profissional.setDataNasc(parseData(scanner.nextLine()));
+                        System.out.println("Email: "); profissional.setEmail(scanner.nextLine());
+                        System.out.println("Area de Atuação: "); profissional.setAreaAtuacao(scanner.nextLine());
+                        
+                        pessoas.add(profissional);
+                    }
+                    break;
+                case 3:
+                    System.out.println("Entre com o nome da Pessoa a ser removida: ");
+                    
+                    excluirPessoa(scanner.nextLine());
+
+                    System.out.println("\nPessoa excluida com sucesso!\n");
+                    break;
+                default:
+                    break;
+            }
+        } while (opcao != 0);
+    }
+
+    public void submenuSalas(Scanner scanner) {                                                                                                                                                                   
+        int opcao, opcaoSala;
+
+        do {
+            System.out.println("-------------------------------------");
+            System.out.println("\tSBBD v1.0/Instituicoes");
+            System.out.println("-------------------------------------");
+            System.out.println("1- Listar");
+            System.out.println("2- Cadastrar");
+            System.out.println("3- Remover");
+            System.out.println("0- Sair");
+            System.out.println("Escolha uma opcao: ");
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    listarSalas();
+                    break;
+                case 2:
+                    System.out.println("Cadastro de Sala:\n");
+
+                        Sala sala = new Sala();
+
+                        System.out.println("\nCadastro de Estudante:\n");
+                        System.out.println("Codigo da sala: "); sala.setCodigo(scanner.nextInt());
+                        System.out.println("Id do predio: "); sala.setIdPredio(scanner.nextInt());
+                        System.out.println("Capacidade:"); sala.setCapacidade(scanner.nextInt());
+                        
+                        salas.add(sala);
+
+                case 3:
+                    System.out.println("Entre com o codigo da Sala a ser removida: ");
+                    
+                    excluirSala(scanner.nextInt());
+
+                    System.out.println("\nSala excluida com sucesso!\n");
+                    break;
+                default:
+                    break;
+            }
+        } while (opcao != 0);
+    }
+
     public static void main(String[] args) throws Exception {
         App app = new App();
         Scanner scanner = new Scanner(System.in);
