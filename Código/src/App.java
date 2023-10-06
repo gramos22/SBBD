@@ -12,6 +12,15 @@ public class App {
     ArrayList<Sala> salas;
     ArrayList<Trabalho> trabalhos;
 
+    public App() {
+        miniCursos = new ArrayList<MiniCurso>();
+        sessoesTecnicas = new ArrayList<SessaoTecnica>();
+        instituicoes = new ArrayList<Instituicao>();
+        pessoas = new ArrayList<Pessoa>();
+        salas = new ArrayList<Sala>();
+        trabalhos = new ArrayList<Trabalho>();
+    }
+
     private LocalDate parseData(String data) {
         String auxData[];
 
@@ -334,6 +343,7 @@ public class App {
                     System.out.println("Cadastro de Mini Curso:\n");
 
                     System.out.println("Titulo: ");
+                    scanner.nextLine();
                     minicurso.setTitulo(scanner.nextLine());
 
                     System.out.println("Data (01/01/2000): ");
@@ -402,8 +412,10 @@ public class App {
                     SessaoTecnica sessaoTecnica = new SessaoTecnica();
 
                     System.out.println("Cadastro de Sessao Tecnica:\n");
-
-                    System.out.println("Data (01/01/2000):"); sessaoTecnica.setData(parseData(scanner.nextLine()));
+                    
+                    System.out.println("Data (01/01/2000):");
+                    scanner.nextLine();
+                    sessaoTecnica.setData(parseData(scanner.nextLine()));
                     
                     System.out.println("Hora Inicio (13:00)"); sessaoTecnica.setHoraInicio(Time.valueOf(scanner.nextLine().concat(":00")));
 
@@ -482,7 +494,8 @@ public class App {
                         Empresa empresa = new Empresa();
 
                         System.out.println("\nCadastro de Empresa:\n");
-                        System.out.println("Nome: "); empresa.setNome(scanner.nextLine());
+                        System.out.println("Nome: ");
+                        scanner.nextLine(); empresa.setNome(scanner.nextLine());
                         System.out.println("CNPJ: "); empresa.setCnpj(scanner.nextLine());
                         System.out.println("Ramo de atividade: "); empresa.setRamoAtividade(scanner.nextLine());
                         
@@ -491,7 +504,8 @@ public class App {
                         Universidade universidade = new Universidade();
 
                         System.out.println("\nCadastro de Universiade:\n");
-                        System.out.println("Nome: "); universidade.setNome(scanner.nextLine());
+                        System.out.println("Nome: "); 
+                        scanner.nextLine(); universidade.setNome(scanner.nextLine());
                         System.out.println("CNPJ: "); universidade.setCnpj(scanner.nextLine());
                         System.out.println("Quantidade de cursos: "); universidade.setQtdeCursos(scanner.nextInt());
                         
@@ -541,7 +555,8 @@ public class App {
                         Estudante estudante = new Estudante();
 
                         System.out.println("\nCadastro de Estudante:\n");
-                        System.out.println("Nome: "); estudante.setNome(scanner.nextLine());
+                        System.out.println("Nome: "); 
+                        scanner.nextLine(); estudante.setNome(scanner.nextLine());
                         System.out.println("CPF: "); estudante.setCpf(scanner.nextLine());
                         System.out.println("Data de nascimento (01/01/2000):"); estudante.setDataNasc(parseData(scanner.nextLine()));
                         System.out.println("Email: "); estudante.setEmail(scanner.nextLine());
@@ -553,7 +568,8 @@ public class App {
                         Professor professor = new Professor();
 
                         System.out.println("\nCadastro de Professor:\n");
-                        System.out.println("Nome: "); professor.setNome(scanner.nextLine());
+                        System.out.println("Nome: "); 
+                        scanner.nextLine(); professor.setNome(scanner.nextLine());
                         System.out.println("CPF: "); professor.setCpf(scanner.nextLine());
                         System.out.println("Data de nascimento (01/01/2000):"); professor.setDataNasc(parseData(scanner.nextLine()));
                         System.out.println("Email: "); professor.setEmail(scanner.nextLine());
@@ -565,7 +581,8 @@ public class App {
                         Profissional profissional = new Profissional();
 
                         System.out.println("\nCadastro de Profissional:\n");
-                        System.out.println("Nome: "); profissional.setNome(scanner.nextLine());
+                        System.out.println("Nome: "); 
+                        scanner.nextLine(); profissional.setNome(scanner.nextLine());
                         System.out.println("CPF: "); profissional.setCpf(scanner.nextLine());
                         System.out.println("Data de nascimento (01/01/2000):"); profissional.setDataNasc(parseData(scanner.nextLine()));
                         System.out.println("Email: "); profissional.setEmail(scanner.nextLine());
@@ -606,12 +623,11 @@ public class App {
                     listarSalas();
                     break;
                 case 2:
-                    System.out.println("Cadastro de Sala:\n");
-
                         Sala sala = new Sala();
 
-                        System.out.println("\nCadastro de Estudante:\n");
-                        System.out.println("Codigo da sala: "); sala.setCodigo(scanner.nextInt());
+                        System.out.println("\nCadastro de Sala:\n");
+                        System.out.println("Codigo da sala: ");
+                        scanner.nextInt(); sala.setCodigo(scanner.nextInt());
                         System.out.println("Id do predio: "); sala.setIdPredio(scanner.nextInt());
                         System.out.println("Capacidade:"); sala.setCapacidade(scanner.nextInt());
                         
@@ -655,7 +671,8 @@ public class App {
 
                     System.out.println("Cadastro de Trabalho:\n");
 
-                    System.out.println("ID: "); trabalho.setId(scanner.nextInt());
+                    System.out.println("ID: "); 
+                    scanner.nextInt(); trabalho.setId(scanner.nextInt());
 
                     System.out.println("Titulo: "); trabalho.setTitulo(scanner.nextLine());
 
@@ -714,14 +731,19 @@ public class App {
                     break;
                 case 2:
                     app.submenuSessoesTecnicas(scanner);
+                    break;
                 case 3:
                     app.submenuInstituicoes(scanner);
+                    break;
                 case 4:
                     app.submenuPessoas(scanner);
+                    break;
                 case 5:
                     app.submenuSalas(scanner);
+                    break;
                 case 6:
                     app.submenuTrabalhos(scanner);
+                    break;
                 default:
                     break;
             }
