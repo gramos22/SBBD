@@ -60,12 +60,12 @@ public class MiniCurso {
     public void listarParticipantes() {
         int tamParticipantes = participantes.size();
 
-        System.out.println("------------------------------------------------");
+        System.out.println("-------------------------------------");
         System.out.println("Participantes:");
         for (int i = 0; i < tamParticipantes; i++) {
             System.out.println("- " + participantes.get(i).getNome());
         }
-        System.out.println("------------------------------------------------");
+        System.out.println("-------------------------------------");
 
     }
 }
