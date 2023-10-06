@@ -1,3 +1,3 @@
 public class Empresa extends Instituicao {
-    private String ramoAtividade
+    private String ramoAtividade;
 }
