@@ -11,6 +11,34 @@ public class MiniCurso {
     private List<Pessoa> participantes;
     private Sala local;
 
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public Time getHoraInicio() {
+        return horaInicio;
+    }
+
+    public Time getHoraFim() {
+        return horaFim;
+    }
+
+    public Profissional getProfissional() {
+        return profissional;
+    }
+
+    public List<Pessoa> getParticipantes() {
+        return participantes;
+    }
+
+    public Sala getLocal() {
+        return local;
+    }
+
     public void adicionarParticipante(Pessoa pessoa) {
         participantes.add(pessoa);
     }
