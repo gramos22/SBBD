@@ -34,6 +34,30 @@ public class SessaoTecnica {
         return apresentacoes;
     }
 
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
+    public void setHoraInicio(Time horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public void setHoraFim(Time horaFim) {
+        this.horaFim = horaFim;
+    }
+
+    public void setLocal(Sala local) {
+        this.local = local;
+    }
+
+    public void setMediador(Professor mediador) {
+        this.mediador = mediador;
+    }
+
+    public void setApresentacoes(ArrayList<Apresentacao> apresentacoes) {
+        this.apresentacoes = apresentacoes;
+    }
+
     public void adicionarApresentacoes(Apresentacao apresentacao){
         apresentacoes.add(apresentacao);
     }
