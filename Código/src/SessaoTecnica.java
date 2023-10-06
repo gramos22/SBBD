@@ -45,6 +45,7 @@ public class SessaoTecnica {
 
         tamApresentacoes = apresentacoes.size();
 
+        System.out.println("-Apresentacoes-");
         for(int i=0; i < tamApresentacoes; i++){
             auxApresentacao = apresentacoes.get(i);
             System.out.println("Id do trabalho: "+auxApresentacao.getTrabalho().getId()+"\n");
