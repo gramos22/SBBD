@@ -39,6 +39,34 @@ public class MiniCurso {
         return local;
     }
 
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public void setHoraInicio(Time horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public void setHoraFim(Time horaFim) {
+        this.horaFim = horaFim;
+    }
+
+    public void setProfissional(Profissional profissional) {
+        this.profissional = profissional;
+    }
+
+    public void setParticipantes(List<Pessoa> participantes) {
+        this.participantes = participantes;
+    }
+
+    public void setLocal(Sala local) {
+        this.local = local;
+    }
+
     public void adicionarParticipante(Pessoa pessoa) {
         participantes.add(pessoa);
     }
