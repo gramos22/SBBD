@@ -560,7 +560,7 @@ public class App {
     }
 
     public void submenuSalas(Scanner scanner) {                                                                                                                                                                   
-        int opcao, opcaoSala;
+        int opcao;
 
         do {
             System.out.println("-------------------------------------");
