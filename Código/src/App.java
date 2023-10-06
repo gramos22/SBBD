@@ -89,7 +89,7 @@ public class App {
         for (int i = 0; i < tamSessoesTecnicas; i++) {
             auxSessaoTecnica = sessoesTecnicas.get(i);
             if (auxSessaoTecnica.getData().equals(data) && auxSessaoTecnica.getHoraInicio().equals(horaInicio)
-                    && auxSessaoTecnica.getMediador().getNome() == mediador) {
+                    && auxSessaoTecnica.getMediador().getNome().compareTo(mediador) == 0) {
                 miniCursos.remove(i);
                 System.out
                         .println("Sessao Tecnica do dia " + data + "e horario " + horaInicio + " removida com sucesso");
@@ -119,7 +119,7 @@ public class App {
         int tamInstituicoes = instituicoes.size();
 
         for (int i = 0; i < tamInstituicoes; i++) {
-            if (instituicoes.get(i).getNome() == nome) {
+            if (instituicoes.get(i).getNome().compareTo(nome) == 0) {
                 instituicoes.remove(i);
                 System.out.println("Instituicao " + nome + " removida com sucesso");
                 return;
@@ -162,7 +162,7 @@ public class App {
         int tamPessoas = pessoas.size();
 
         for (int i = 0; i < tamPessoas; i++) {
-            if (pessoas.get(i).getNome() == nome) {
+            if (pessoas.get(i).getNome().compareTo(nome) == 0) {
                 pessoas.remove(i);
                 System.out.println("Pessoa " + nome + " removida com sucesso");
                 return;
@@ -378,6 +378,7 @@ public class App {
                     break;
                 case 3:
                     System.out.println("Entre com o titulo do Mini Curso a ser removido: ");
+                    scanner.nextLine();
                     excluirMinicurso(scanner.nextLine());
                     break;
                 default:
@@ -448,6 +449,7 @@ public class App {
                     LocalDate auxData;
 
                     System.out.println("Entre com a data da Sessao Tecnica a ser removida (01/01/2000): ");
+                    scanner.nextLine();
                     auxData = parseData(scanner.nextLine());
 
                     System.out.println("Entre com a hora de Inicio da Sessao Tecnica a ser removida (13:00): ");
@@ -515,6 +517,7 @@ public class App {
                 case 3:
                     System.out.println("Entre com o nome da instituicao a ser removida: ");
                     
+                    scanner.nextLine();
                     excluirInstituicao(scanner.nextLine());
 
                     System.out.println("\nSessao Tecnica excluida com sucesso!\n");
@@ -530,7 +533,7 @@ public class App {
 
         do {
             System.out.println("-------------------------------------");
-            System.out.println("\tSBBD v1.0/Instituicoes");
+            System.out.println("\tSBBD v1.0/Pessoas");
             System.out.println("-------------------------------------");
             System.out.println("1- Listar");
             System.out.println("2- Cadastrar");
@@ -593,10 +596,8 @@ public class App {
                     break;
                 case 3:
                     System.out.println("Entre com o nome da Pessoa a ser removida: ");
-                    
+                    scanner.nextLine();
                     excluirPessoa(scanner.nextLine());
-
-                    System.out.println("\nPessoa excluida com sucesso!\n");
                     break;
                 default:
                     break;
@@ -609,7 +610,7 @@ public class App {
 
         do {
             System.out.println("-------------------------------------");
-            System.out.println("\tSBBD v1.0/Instituicoes");
+            System.out.println("\tSBBD v1.0/Salas");
             System.out.println("-------------------------------------");
             System.out.println("1- Listar");
             System.out.println("2- Cadastrar");
@@ -636,6 +637,7 @@ public class App {
                 case 3:
                     System.out.println("Entre com o codigo da Sala a ser removida: ");
                     
+                    scanner.nextInt();
                     excluirSala(scanner.nextInt());
 
                     System.out.println("\nSala excluida com sucesso!\n");
@@ -696,6 +698,7 @@ public class App {
                 case 3:
                     System.out.println("Entre com o ID do trabalho a ser excluido: ");
                     
+                    scanner.nextInt();
                     excluirTrabalho(scanner.nextInt());
 
                     System.out.println("\nSessao Tecnica excluida com sucesso!\n");
