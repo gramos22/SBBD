@@ -627,6 +627,14 @@ public class App {
                     break;
                 case 2:
                     app.submenuSessoesTecnicas(scanner);
+                case 3:
+                    app.submenuInstituicoes(scanner);
+                case 4:
+                    app.submenuPessoas(scanner);
+                case 5:
+                    app.submenuSalas(scanner);
+                case 6:
+                    app.submenuTrabalhos(scanner);
                 default:
                     break;
             }
