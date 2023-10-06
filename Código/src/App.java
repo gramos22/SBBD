@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
+    private static App instance;
     ArrayList<MiniCurso> miniCursos;
     ArrayList<SessaoTecnica> sessoesTecnicas;
     ArrayList<Instituicao> instituicoes;
@@ -12,13 +13,21 @@ public class App {
     ArrayList<Sala> salas;
     ArrayList<Trabalho> trabalhos;
 
-    public App() {
+    private App() {
         miniCursos = new ArrayList<MiniCurso>();
         sessoesTecnicas = new ArrayList<SessaoTecnica>();
         instituicoes = new ArrayList<Instituicao>();
         pessoas = new ArrayList<Pessoa>();
         salas = new ArrayList<Sala>();
         trabalhos = new ArrayList<Trabalho>();
+    }
+
+    public static App getInstance() {
+        if(instance == null) {
+            instance = new App();
+        }
+
+        return instance;
     }
 
     private LocalDate parseData(String data) {
@@ -710,7 +719,7 @@ public class App {
     }
 
     public static void main(String[] args) throws Exception {
-        App app = new App();
+        App app = getInstance();
         Scanner scanner = new Scanner(System.in);
         int opcao;
 
