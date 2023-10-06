@@ -69,7 +69,7 @@ public class SessaoTecnica {
         for(int i = 0; i < tamApresentacoes; i++) {
             if(apresentacoes.get(i).getTrabalho().getId() == codigoTrabalho) {
                 apresentacoes.remove(i);
-                System.out.println("Apresentacao com trabalho "+codigoTrabalho+"removido com sucesso");
+                System.out.println("Apresentacao com trabalho "+codigoTrabalho+" removido com sucesso");
                 return;
             }
         }
